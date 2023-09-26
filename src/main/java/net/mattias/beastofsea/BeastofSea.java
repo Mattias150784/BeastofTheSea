@@ -15,7 +15,7 @@ public class BeastofSea
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MOD_ID = "beastofsea";
-
+//testnewcode
     public BeastofSea()
     {
         // Register the setup method for modloading
