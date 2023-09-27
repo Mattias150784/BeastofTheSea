@@ -18,6 +18,6 @@ public class SeaBunnyModel extends AnimatedGeoModel<SeaBunnyEntity> {
 
     @Override
     public ResourceLocation getAnimationFileLocation(SeaBunnyEntity animatable) {
-        return new ResourceLocation(BeastofSea.MOD_ID, "animations/seabunny.walk.json");
+        return new ResourceLocation(BeastofSea.MOD_ID, "animations/seabunny.animation.json");
     }
 }
