@@ -5,15 +5,21 @@ import net.mattias.beastofsea.entity.ModEntityTypes;
 import net.mattias.beastofsea.entity.client.SeaBunnyRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
+import net.mattias.beastofsea.item.custom.ModItems;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-// The value here should match an entry in the META-INF/mods.toml file
+
 @Mod(BeastofSea.MOD_ID)
 public class BeastofSea
 {
@@ -23,6 +29,7 @@ public class BeastofSea
 
     public BeastofSea()
     {
+       IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
@@ -34,10 +41,9 @@ public class BeastofSea
 
         // Register entity types using the mod's event bus
         ModEntityTypes.register(modEventBus);
-
+        ModItems.register(eventBus);
         // Initialize GeckoLib
         GeckoLib.initialize();
-        EntityRenderers.register(ModEntityTypes.SEABUNNY.get(), SeaBunnyRenderer::new);
     }
 
     private void setup(final FMLCommonSetupEvent event)
@@ -45,5 +51,15 @@ public class BeastofSea
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    }
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> {
+                EntityRenderers.register(ModEntityTypes.SEABUNNY.get(), SeaBunnyRenderer::new);
+            });
+        }
     }
 }
