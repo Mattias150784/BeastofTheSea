@@ -1,6 +1,7 @@
 package net.mattias.beastofsea.entity;
 
 import net.mattias.beastofsea.BeastofSea;
+import net.mattias.beastofsea.entity.custom.CoralStarfishEntity;
 import net.mattias.beastofsea.entity.custom.SeaBunnyEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +21,11 @@ public class ModEntityTypes {
                             .sized(0.8f, 0.6f)
                             .build(new ResourceLocation(BeastofSea.MOD_ID, "sea_bunny").toString()));
 
+    public static final RegistryObject<EntityType<CoralStarfishEntity>> CORAL_STARFISH =
+            ENTITY_TYPES.register("coral_starfish",
+                    () -> EntityType.Builder.of(CoralStarfishEntity::new, MobCategory.CREATURE)
+                            .sized(0.8f, 0.6f)
+                            .build(new ResourceLocation(BeastofSea.MOD_ID, "coral_starfish").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

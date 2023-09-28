@@ -1,8 +1,7 @@
-package net.mattias.beastofsea.item.custom;
+package net.mattias.beastofsea.item;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.mattias.beastofsea.item.custom.ModItems;
 
 public class ModCreativeModeTab {
     public static final CreativeModeTab BEAST_OF_SEA_TAB = new CreativeModeTab("beastofseatab") {
@@ -12,3 +11,4 @@ public class ModCreativeModeTab {
         }
     };
 }
+

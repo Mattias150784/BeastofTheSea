@@ -13,6 +13,6 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
         event.put(ModEntityTypes.SEABUNNY.get(), SeaBunnyEntity.createMobAttributes().build());
-
+        event.put(ModEntityTypes.CORAL_STARFISH.get(), SeaBunnyEntity.createMobAttributes().build());
     }
 }
