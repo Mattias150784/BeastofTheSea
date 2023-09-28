@@ -16,7 +16,7 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.SEABUNNY, 0x8c8c8c, 0xa48484,
                     new Item.Properties().tab(ModCreativeModeTab.BEAST_OF_SEA_TAB)));
     public static final RegistryObject<Item> ALGAE_SHEETS = ITEMS.register("algae_sheet",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.BEAST_OF_SEA_TAB)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.BEAST_OF_SEA_TAB).food(ModFoods.ALGAE_SHEET)));
 
     public static void register(IEventBus eventBus) {
     }
